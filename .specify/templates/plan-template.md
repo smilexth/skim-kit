@@ -54,6 +54,10 @@
 - [ ] Orchestrator-Worker Pattern: Clear separation of planning vs execution responsibilities
 - [ ] Explicit Over Implicit: Absolute file paths, explicit output locations, auditable config
 - [ ] Meaningful Naming Convention: Descriptive names for specs, no numeric prefixes or generic identifiers
+- [ ] GitHub CLI Repository Creation: Use gh repo create for repository operations
+- [ ] Code Review Standards: Systematic code review with assignment matrix and SLA requirements
+- [ ] CI/CD Pipeline Standards: Mandatory quality gates and deployment procedures
+- [ ] Error Handling & Logging: Structured logging with correlation IDs and proper error handling
 
 ### Development Workflow Compliance
 - [ ] Task Management: TodoWrite used for tracking, single task focus, immediate completion
@@ -61,6 +65,11 @@
 - [ ] Communication Standards: File-based outputs, structured formats, clear naming conventions
 - [ ] Safety Guidelines: Interactive confirmations, no force operations, pre-execution validation
 - [ ] Resource Management: Concurrent workers limited to 5-10, performance monitored
+- [ ] Branch Management: Branch lifecycle rules, merge strategies, hotfix procedures
+- [ ] Release Management: Release planning, versioning, validation, rollback procedures
+- [ ] Communication & Collaboration: Meeting standards, knowledge sharing, incident response
+- [ ] Documentation Standards: API docs, code comments, architecture documentation
+- [ ] Tooling & Development Environment: IDE standards, setup procedures, debugging
 
 ### Workflows & Planning Compliance
 - [ ] Testing Discipline: Manual testing checklist completed before pushing changes
@@ -99,15 +108,24 @@
 - [ ] Factor XII (Admin Processes): One-off administrative tasks
 
 ### Security & Compliance
-- [ ] Dependency Management: No critical vulnerabilities
-- [ ] Data Handling: PII protection, secure config management
-- [ ] AI Agent Security: Auditability, no credential exposure
+- [ ] Dependency Management: No critical vulnerabilities, automated vulnerability scanning
+- [ ] Data Handling: PII protection, secure config management, data minimization principles
+- [ ] AI Agent Security: Auditability, no credential exposure, secure AI interactions
 - [ ] System Configuration: Asia/Bangkok timezone standard
+- [ ] Security Review Process: Security checklist completed for all changes
+- [ ] Secrets Management: Encrypted storage, regular rotation, audit logging
+- [ ] Security Testing: SAST/DAST scanning, penetration testing, vulnerability assessment
+- [ ] License Compliance: Open source license scanning and approval process
+- [ ] Data Privacy: GDPR/CCPA compliance, privacy impact assessments
+- [ ] Accessibility: WCAG 2.1 AA compliance requirements
 
 ### Quality Assurance
-- [ ] Testing Mandate: TDD with 90% coverage
+- [ ] Testing Mandate: TDD with 90% coverage, enhanced integration and E2E testing
 - [ ] Definition of Done: All constitutional requirements met
 - [ ] Static Analysis: Code quality and validation gates
+- [ ] Code Quality Metrics: Coverage thresholds, complexity limits, technical debt tracking
+- [ ] Performance Standards: Performance budgets, load testing, monitoring requirements
+- [ ] API Design Standards: Versioning, response formats, authentication patterns
 
 ### Technology Selection Compliance
 - [ ] OSS-First Evaluation: All commercial alternatives documented
@@ -327,4 +345,4 @@ directories captured above]
 - [ ] Complexity deviations documented
 
 ---
-*Based on Constitution v2.1.1 - See `/memory/constitution.md`*
+*Based on Constitution v3.0.0 - See `/memory/constitution.md`*

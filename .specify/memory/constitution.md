@@ -1,11 +1,11 @@
 <!--
 Sync Impact Report:
-Version change: 2.3.1 → 2.4.0 (minor version)
+Version change: 2.4.2 → 3.0.0 (major version)
 Modified principles: N/A
-Added sections: Principle VI - Meaningful Naming Convention
+Added sections: 22 comprehensive sections covering Code Review, CI/CD, Security, Performance, API Design, Database Management, Testing, Branch Management, Documentation, Tooling, Release Management, Code Quality, Communication, and Compliance standards
 Removed sections: N/A
-Templates requiring updates: ✅ plan-template.md (updated with naming convention compliance), ✅ tasks-template.md (updated with naming convention compliance), ✅ spec-template.md (updated with naming convention compliance), ⚠ command templates (needs updating for naming convention compliance)
-Follow-up TODOs: Update all templates to enforce meaningful naming conventions in git worktrees and branches
+Templates requiring updates: ⚠ plan-template.md (needs major updates for all new standards), ⚠ tasks-template.md (needs major updates for all new standards), ⚠ spec-template.md (needs major updates for all new standards), ⚠ command templates (needs major updates for all new standards)
+Follow-up TODOs: Update all templates to reflect comprehensive constitutional standards
 -->
 
 # Skim-Kit Constitution
@@ -30,6 +30,18 @@ All file paths must be absolute, not relative. All output locations must be spec
 ### VI. Meaningful Naming Convention
 All specifications in git worktrees or branches MUST use meaningful, descriptive names that clearly communicate the feature purpose. NEVER use numeric prefixes (e.g., 001-, 002-) or generic identifiers. Names must be human-readable and instantly understandable. Examples: `user-authentication-system` instead of `001-read-this-n8n`.
 
+### VII. GitHub CLI Repository Creation
+When users request repository creation, MUST use `gh repo create` command. GitHub CLI is the standard tool for all repository operations, providing consistent authentication, proper configuration, and integration with existing workflows. Alternative methods MAY ONLY be used when GitHub CLI is unavailable or explicitly requested otherwise.
+
+### VIII. Code Review Standards
+All pull requests MUST undergo systematic code review before merge with clear assignment matrices, SLA requirements, and approval criteria based on change size and risk level. Reviews must be constructive, specific, and address security, performance, functionality, testing, documentation, error handling, and dependencies.
+
+### IX. CI/CD Pipeline Standards
+All pull requests MUST pass mandatory quality gates including linting (0 errors/warnings), unit tests (≥90% coverage), integration tests, security scanning (no critical/high vulnerabilities), dependency scanning, and build success. Deployment pipelines must include rollback capability, health checks, monitoring, and proper build failure management with defined escalation procedures.
+
+### X. Error Handling & Logging Standards
+All errors must follow consistent exception hierarchies with proper context and user-friendly messages. Logging must use structured JSON format with correlation IDs, ISO timestamps, and appropriate log levels (DEBUG, INFO, WARN, ERROR, FATAL). Error monitoring must include rate tracking, pattern detection, and immediate alerting for critical errors and performance degradation.
+
 ## Architecture & Technology Mandates
 
 ### Technology Stack
@@ -40,6 +52,15 @@ All specifications in git worktrees or branches MUST use meaningful, descriptive
 - **GitHub CLI**: GitHub CLI (gh) for GitHub operations (MUST use gh for all GitHub API operations)
 - **AI Integration**: Multi-agent support (Claude, Copilot, Gemini, etc.)
 - **Developer Environment**: macOS and Linux as primary platforms, Windows as alternative
+
+### API Design Standards
+All APIs MUST follow semantic versioning with URL path versioning (/api/v1/, /api/v2/) and maintain backward compatibility for at least 2 major versions. Request/response formats must use consistent JSON structure with standardized error responses. Authentication must use JWT tokens with maximum 1-hour expiration and secure refresh token mechanisms. Rate limiting must be implemented per user/IP with proper headers and graceful degradation.
+
+### Database Management Standards
+All database migrations must be version controlled with rollback capability and tested on staging before production. Backup requirements include daily full backups with 30-day retention and storage in multiple geographic locations. Query performance must not exceed 100ms for 95th percentile with proper indexing and connection pooling. Data consistency must be enforced through database constraints, application-level validation, and regular consistency checks with comprehensive audit logging.
+
+### Performance Standards
+Performance budgets require 95th percentile response time < 200ms, First Contentful Paint < 1.5 seconds, Largest Contentful Paint < 2.5 seconds, and Time to Interactive < 3.8 seconds. Load testing must be conducted quarterly with 2x expected peak load testing. Multi-level caching must be implemented with proper invalidation strategies, cache hit ratio monitoring, and consistency across distributed systems. Performance monitoring must include real-time monitoring, alerting, and capacity planning.
 
 ### Development Methodology Requirements
 - **Test-Driven Development**: All new functionality MUST follow TDD methodology with Red-Green-Refactor cycle
@@ -197,6 +218,12 @@ All multi-service applications MUST follow comprehensive containerization practi
 ### Testing Mandate
 All new functionality MUST be developed using Test-Driven Development (TDD) methodology. Every feature MUST include unit tests with a minimum of 90% code coverage and at least one integration test for primary use cases.
 
+### Enhanced Testing Standards
+Integration testing must cover component interactions, database operations, external service integrations, API contracts, and message queue operations using dedicated test environments and mock services. End-to-end testing must cover all critical user journeys with cross-browser and cross-device testing including performance and accessibility compliance. Performance testing must be integrated with load testing tools and include stress testing, performance regression testing, and application profiling. Test data management must use automated generation with data privacy protection, consistency across test runs, and proper cleanup procedures.
+
+### Code Quality Metrics
+Code coverage requirements include minimum 90% line coverage, 85% branch coverage, 80% integration coverage, 100% critical path coverage, and 70% E2E scenario coverage. Complexity limits include maximum cyclomatic complexity of 10 per function, cognitive complexity of 15, function length of 50 lines, file length of 500 lines, and parameter count of 5 per function. Technical debt must be regularly identified, quantified, prioritized, and repaid with comprehensive tracking and monitoring.
+
 ### Definition of Done
 A task is considered 'Done' only when:
 - Code is implemented and follows constitutional principles
@@ -290,6 +317,9 @@ Treat logs as event streams. Logs MUST be written to stdout/stderr as unstructur
 ### Factor XII: Admin Processes
 Run admin/management tasks as one-off processes. Administrative scripts MUST run in identical execution environment as regular application processes with same configuration.
 
+### Comprehensive Security Standards
+All changes must pass security review checklist covering authentication, authorization, input validation, SQL injection prevention, XSS prevention, sensitive data protection, and dependency vulnerability management. Daily automated vulnerability scanning must be conducted with critical vulnerabilities patched within 24 hours, high within 7 days, medium within 30 days, and low in next major release. Secrets must be encrypted at rest with principle of least privilege access, regular rotation (max 90 days), and comprehensive audit logging. Security testing must include automated SAST, quarterly DAST scans, annual penetration testing, and regular vulnerability assessments with tracked remediation.
+
 ## Security & Compliance
 
 ### Dependency Management
@@ -300,6 +330,15 @@ No Personally Identifiable Information (PII) may be logged in plain text. All co
 
 ### AI Agent Security
 All AI agent interactions must be logged for auditability. No credentials or API keys may be exposed in templates or documentation. Agent instructions must not contain sensitive information.
+
+### Open Source License Compliance
+All dependencies must undergo automated license scanning with documented approval processes for new dependencies. License compliance must be regularly monitored and audited with complete license inventory, clear policy guidelines, documented exceptions, and regular training. High-risk licenses must undergo legal review with comprehensive compliance reporting.
+
+### Data Privacy and Protection
+Personally identifiable information must be protected with data minimization principles, proper security, encryption, access control, and defined retention/deletion policies. GDPR and CCPA compliance must be maintained with privacy impact assessments, data breach response procedures, and regular privacy training.
+
+### Accessibility Requirements
+WCAG 2.1 AA compliance must be maintained with regular accessibility testing, comprehensive documentation, training and awareness programs, and continuous improvement practices. Accessible design principles must be followed in both development and maintenance phases.
 
 ### System Configuration Standards
 All cloud regions MUST use the Asia/Bangkok timezone (UTC+7) as the standard timezone configuration. This ensures consistent timestamp handling across all deployment environments and simplifies debugging and log analysis.
@@ -317,6 +356,12 @@ The system MUST support multiple AI agents (Claude, Copilot, Gemini, etc.) with 
 
 ### Development Environment Standards
 All development MUST prioritize Unix-like environments with Windows as supported alternative:
+
+### Enhanced Documentation Standards
+API documentation must include complete OpenAPI 3.0 specification with interactive documentation, code examples in multiple languages, and comprehensive error documentation. Code documentation must cover all public APIs, complex logic, business rules, configuration options, and external dependencies. Architecture documentation must include system overviews, component diagrams, data flow diagrams, technology stack documentation, and design decision rationales with regular reviews and change tracking.
+
+### Tooling and Development Environment Standards
+IDE standards require VS Code with standardized extensions including code formatting, Git integration, debugging tools, testing tools, and documentation editing. Development tooling must include consistent Git configuration, standardized package managers, build tools, testing frameworks, and linting rules. Local development setup must use Docker for consistent environments, standardized environment variable management, automated setup procedures, and comprehensive troubleshooting documentation.
 
 #### Primary Development Platforms
 - **macOS**: First-priority development environment with full tooling support
@@ -446,6 +491,18 @@ All development work MUST follow comprehensive workflow standards for consistenc
 - **Process Cleanup**: MUST clean up stuck processes promptly
 - **Performance Monitoring**: MUST monitor system performance during operations
 
+### Branch Management Strategy
+Branch types include protected main branch, short-lived feature branches, stabilization release branches, emergency hotfix branches, and long-running development branches. Feature branches have maximum 2-week lifetime, release branches 4 weeks, and hotfix branches 1 week. Merge strategies prefer squash merge for clean history with merge commits for significant features, rebase for linear history, and fast-forward for simple integration. Hotfix procedures require 1-hour triage, 2-hour response team activation, 24-hour resolution, and 48-hour post-mortem.
+
+### Release Management Standards
+Release planning requires quarterly release calendars, feature planning, resource allocation, risk assessment, and stakeholder communication. Versioning must follow strict semantic versioning with Git tags, comprehensive version documentation, and environment promotion. Release validation requires automated testing, manual validation, performance testing, security testing, and integration testing with comprehensive rollback procedures, trigger criteria, and post-rollback analysis.
+
+### Communication and Collaboration Standards
+Meeting standards include daily standups with time limits, regular sprint planning, retrospectives, technical reviews, and stakeholder updates. Communication protocols must define channels, response times, documentation procedures, and escalation processes. Knowledge sharing requires comprehensive documentation, regular presentations, mentoring programs, training, and cross-team collaboration with centralized knowledge base, effective search, and regular updates.
+
+### Incident Response and Escalation
+Incident response procedures must include severity classification, response team roles, communication plans, resolution processes, and post-mortem learning. Escalation procedures must define triggers, paths, response times, documentation, and regular training with clear escalation matrices and stakeholder notification protocols.
+
 ### Workflows & Planning Standards
 All development work MUST follow comprehensive workflow and planning standards:
 
@@ -499,7 +556,7 @@ git checkout -b feat/issue-number-description
 
 # 4. Commit with structured message format
 git add -A
-git commit -m "feat: Brief description
+git commit -m "type(scope): brief description
 
 - What: Specific changes made
 - Why: Motivation for the changes
@@ -517,6 +574,138 @@ gh pr create --title "Same as commit" --body "Fixes #issue_number"
 # - ONLY provide the PR link to the user
 # - WAIT for explicit user instruction to merge
 ```
+
+#### Conventional Commit Message Templates
+All commit messages MUST follow the Conventional Commits specification. Each commit type has specific templates and use cases:
+
+##### Commit Types and Templates
+
+**feat: New Features**
+```bash
+feat(scope): add user authentication system
+
+- What: Implemented JWT-based authentication with login/logout functionality
+- Why: Enable secure user access and session management
+- Impact: Adds authentication endpoints, middleware, and user session handling
+
+Closes #123
+```
+
+**fix: Bug Fixes**
+```bash
+fix(scope): resolve memory leak in data processing
+
+- What: Fixed improper cleanup of event listeners in data processor
+- Why: Prevent memory accumulation during long-running operations
+- Impact: Reduces memory usage, prevents application crashes
+
+Fixes #124
+```
+
+**docs: Documentation**
+```bash
+docs(scope): update API documentation for v2.0 endpoints
+
+- What: Added comprehensive examples and parameter descriptions
+- Why: Improve developer experience and API usability
+- Impact: Complete documentation coverage for all public endpoints
+```
+
+**style: Code Style**
+```bash
+style(scope): normalize code formatting in service layer
+
+- What: Applied consistent indentation and line breaks
+- Why: Improve code readability and maintain consistency
+- Impact: No functional changes, formatting improvements only
+```
+
+**refactor: Code Refactoring**
+```bash
+refactor(scope): extract validation logic to dedicated service
+
+- What: Moved validation rules from controllers to validation service
+- Why: Improve separation of concerns and code reusability
+- Impact: Cleaner controllers, reusable validation across endpoints
+```
+
+**perf: Performance Improvements**
+```bash
+perf(scope): optimize database queries with proper indexing
+
+- What: Added composite indexes for frequently queried columns
+- Why: Reduce query execution time and improve response speed
+- Impact: 40% reduction in average query response time
+```
+
+**test: Testing**
+```bash
+test(scope): add integration tests for payment processing
+
+- What: Created comprehensive test suite for payment workflows
+- Why: Ensure payment processing reliability and edge case handling
+- Impact: 95% test coverage for payment module
+```
+
+**build: Build System**
+```bash
+build(scope): update webpack configuration for production optimization
+
+- What: Added code splitting and tree shaking configurations
+- Why: Reduce bundle size and improve loading performance
+- Impact: 25% smaller production bundles
+```
+
+**ci: Continuous Integration**
+```bash
+ci(scope): add automated security scanning to GitHub Actions
+
+- What: Integrated npm audit and dependency vulnerability checks
+- Why: Proactively detect and prevent security vulnerabilities
+- Impact: Automated security validation on all pull requests
+```
+
+**chore: Maintenance**
+```bash
+chore(scope): update dependencies to latest stable versions
+
+- What: Updated React, TypeScript, and supporting libraries
+- Why: Incorporate bug fixes and performance improvements
+- Impact: Improved stability and access to latest features
+```
+
+**revert: Revert Changes**
+```bash
+revert(scope): revert previous authentication changes
+
+- What: Rolled back commits abc1234 and def5678 due to issues
+- Why: Address critical bugs introduced in recent changes
+- Impact: Restores system stability while investigating issues
+
+This reverts commit abc1234.
+```
+
+##### Commit Message Requirements
+
+**Format**: `type(scope): description`
+
+- **type**: One of the commit types listed above
+- **scope**: Specific module or component affected (optional for global changes)
+- **description**: Brief, imperative mood description (max 50 characters)
+
+**Body Requirements**:
+- **What**: Specific changes made (technical details)
+- **Why**: Motivation for the changes (business/technical reason)
+- **Impact**: Effect on the system (performance, behavior, etc.)
+- **Issue Reference**: Closes #123, Fixes #123, or Resolves #123 when applicable
+
+**Examples by Category**:
+
+**Features**: `feat(auth): add two-factor authentication support`
+**Bug Fixes**: `fix(api): handle null values in user profile endpoint`
+**Documentation**: `docs(readme): update installation instructions for macOS`
+**Refactoring**: `refactor(database): extract connection pool management`
+**Performance**: `perf(cache): implement Redis caching for frequently accessed data`
 
 #### Planning Issue Structure Standards
 All planning issues MUST include these structured sections:
@@ -694,4 +883,4 @@ The constitution is enforced through:
 - Template consistency validation
 - Impact analysis for changes
 
-**Version**: 2.4.0 | **Ratified**: 2025-10-02 | **Last Amended**: 2025-10-02
+**Version**: 3.0.0 | **Ratified**: 2025-10-02 | **Last Amended**: 2025-10-02

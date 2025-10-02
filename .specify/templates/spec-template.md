@@ -95,10 +95,17 @@ When creating this spec from a user prompt:
 
 ### Requirement Completeness
 - [ ] No [NEEDS CLARIFICATION] markers remain
-- [ ] Requirements are testable and unambiguous  
+- [ ] Requirements are testable and unambiguous
 - [ ] Success criteria are measurable
 - [ ] Scope is clearly bounded
 - [ ] Dependencies and assumptions identified
+
+### Compliance & Standards
+- [ ] Security requirements identified (authentication, authorization, data protection)
+- [ ] Performance requirements specified (response times, throughput, scalability)
+- [ ] Accessibility requirements considered (WCAG compliance if applicable)
+- [ ] Data privacy and retention requirements documented
+- [ ] Integration requirements with external systems identified
 
 ---
 

@@ -90,8 +90,34 @@
 ## Phase 3.6: Polish & Documentation
 - [ ] T029 [P] Update docs/api.md with latest implementation details
 - [ ] T030 [P] Remove code duplication identified during testing
-- [ ] T031 Run manual-testing.md validation scenarios
-- [ ] T032 Final test suite validation and coverage verification
+
+## Phase 3.7: Code Quality & Performance
+- [ ] T031 [P] Run code complexity analysis and refactor if complexity > 10
+- [ ] T032 [P] Ensure code coverage meets requirements: 90% line, 85% branch coverage
+- [ ] T033 [P] Performance testing: validate response times < 200ms (95th percentile)
+- [ ] T034 [P] Technical debt assessment and documentation
+
+## Phase 3.8: Security & Compliance
+- [ ] T035 [P] Run security vulnerability scanning and address findings
+- [ ] T036 [P] Validate secrets management and encryption implementation
+- [ ] T037 [P] License compliance check for all dependencies
+- [ ] T038 [P] Accessibility compliance validation (WCAG 2.1 AA)
+
+## Phase 3.9: Integration & E2E Testing
+- [ ] T039 [P] End-to-end testing for critical user journeys
+- [ ] T040 [P] Cross-browser and cross-device testing validation
+- [ ] T041 [P] Integration testing with external services
+- [ ] T042 [P] Load testing with 2x expected peak load
+
+## Phase 3.10: Documentation & Release Preparation
+- [ ] T043 [P] Complete API documentation with OpenAPI specification
+- [ ] T044 [P] Update architecture documentation and diagrams
+- [ ] T045 [P] Prepare release notes and changelog
+- [ ] T046 [P] Final validation and rollback procedure testing
+
+## Phase 3.11: Final Validation
+- [ ] T047 Run manual-testing.md validation scenarios
+- [ ] T048 Final test suite validation and coverage verification
 
 ## Dependencies
 - Tests (T004-T013) before implementation (T014-T020)
