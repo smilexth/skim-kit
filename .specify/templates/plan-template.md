@@ -1,8 +1,8 @@
 
 # Implementation Plan: [FEATURE]
 
-**Branch**: `[###-feature-name]` | **Date**: [DATE] | **Spec**: [link]
-**Input**: Feature specification from `/specs/[###-feature-name]/spec.md`
+**Branch**: `[meaningful-feature-name]` | **Date**: [DATE] | **Spec**: [link]
+**Input**: Feature specification from `/specs/[meaningful-feature-name]/spec.md`
 
 ## Execution Flow (/plan command scope)
 ```
@@ -47,13 +47,124 @@
 ## Constitution Check
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+### Core Principles Compliance
+- [ ] Simplicity First: Simplest solution implemented, complexity justified by need
+- [ ] Safety by Default: No force flags, reversible operations, explicit confirmations
+- [ ] Incremental Development: Work broken into <1 hour increments, independently deployable
+- [ ] Orchestrator-Worker Pattern: Clear separation of planning vs execution responsibilities
+- [ ] Explicit Over Implicit: Absolute file paths, explicit output locations, auditable config
+- [ ] Meaningful Naming Convention: Descriptive names for specs, no numeric prefixes or generic identifiers
+
+### Development Workflow Compliance
+- [ ] Task Management: TodoWrite used for tracking, single task focus, immediate completion
+- [ ] Code Change Process: Context understood, patterns preserved, changes tested before commit
+- [ ] Communication Standards: File-based outputs, structured formats, clear naming conventions
+- [ ] Safety Guidelines: Interactive confirmations, no force operations, pre-execution validation
+- [ ] Resource Management: Concurrent workers limited to 5-10, performance monitored
+
+### Workflows & Planning Compliance
+- [ ] Testing Discipline: Manual testing checklist completed before pushing changes
+- [ ] GitHub Workflow: Issue creation process followed with structured format
+- [ ] Branch Management: Feature branches created from main, proper naming conventions
+- [ ] Commit Standards: Structured commit messages with What/Why/Impact sections
+- [ ] Pull Request Process: No self-merging, proper review流程 followed
+- [ ] Planning Structure: Planning issues include Overview, Current State, Proposed Solution, Acceptance Criteria
+
+### Operational Safety Compliance
+- [ ] Repository Usage: Correct repository targeting, no upstream operations without permission
+- [ ] Command Safety: No force flags (-f, --force) used, safe command options only
+- [ ] Git Operations: No force push/checkout/clean, history preservation maintained
+- [ ] Pull Request Safety: No self-merging, explicit user permission required
+- [ ] File Operations: Interactive deletion (rm -i), reversible operations, backups maintained
+- [ ] Package Management: No force installation, controlled updates, lockfile reviews
+
+### Development Methodology Compliance
+- [ ] Test-Driven Development: TDD methodology with Red-Green-Refactor cycle followed
+- [ ] Spec-Driven Development: Specifications created as executable artifacts guiding development
+- [ ] Research-Driven Implementation: Web research conducted before all technology decisions
+- [ ] Open Source First: OSS solutions prioritized over commercial alternatives
+
+### Twelve-Factor Development Compliance
+- [ ] Factor I (Codebase): Single Git repository, multiple deployments
+- [ ] Factor II (Dependencies): Explicit dependency declaration
+- [ ] Factor III (Config): Environment variables for configuration
+- [ ] Factor IV (Backing Services): Configurable via connection strings
+- [ ] Factor V (Build, Release, Run): Strict stage separation
+- [ ] Factor VI (Processes): Stateless, disposable processes
+- [ ] Factor VII (Port Binding): Self-contained service exposure
+- [ ] Factor VIII (Concurrency): Process model scaling
+- [ ] Factor IX (Disposability): Fast startup, graceful shutdown
+- [ ] Factor X (Dev/Prod Parity): Environment consistency
+- [ ] Factor XI (Logs): Event streams to stdout/stderr
+- [ ] Factor XII (Admin Processes): One-off administrative tasks
+
+### Security & Compliance
+- [ ] Dependency Management: No critical vulnerabilities
+- [ ] Data Handling: PII protection, secure config management
+- [ ] AI Agent Security: Auditability, no credential exposure
+- [ ] System Configuration: Asia/Bangkok timezone standard
+
+### Quality Assurance
+- [ ] Testing Mandate: TDD with 90% coverage
+- [ ] Definition of Done: All constitutional requirements met
+- [ ] Static Analysis: Code quality and validation gates
+
+### Technology Selection Compliance
+- [ ] OSS-First Evaluation: All commercial alternatives documented
+- [ ] License Compatibility: OSS with permissive licenses verified
+- [ ] Community Viability: OSS project health and support assessed
+- [ ] Commercial Justification: Business requirements documented if commercial selected
+- [ ] Prohibited Technologies: No prohibited commercial software included
+
+### Documentation & Visualization Compliance
+- [ ] Mermaid Diagrams: Workflow and architecture diagrams included when requested
+- [ ] Table Standards: Structured data presented in Markdown tables
+- [ ] Chart Requirements: Performance and quality metrics visualized
+- [ ] User-Requested Visualizations: Diagrams provided when explicitly asked
+- [ ] Accessibility: All visualizations include descriptive explanations
+
+### Directory Structure Compliance
+- [ ] Documentation-Only Areas: specs/, docs/, prompts/ contain only explanatory content
+- [ ] Artifact-Only Areas: artifacts/, deploy/, build/ contain only deployment materials
+- [ ] Source Code Separation: src/, tests/, lib/ contain only code-related files
+- [ ] No Mixed Content: Directories have single, clear purpose with no mixed types
+- [ ] Gitignore Configuration: Artifact directories properly gitignored
+
+### Development Environment Compliance
+- [ ] Platform Priority: macOS and Linux as primary platforms verified
+- [ ] Windows Support: WSL2 configuration for Windows development verified
+- [ ] Cross-Platform Tools: Scripts use cross-platform commands validated
+- [ ] Containerization: Docker configuration consistent across platforms
+- [ ] Documentation: Platform-specific setup guides provided
+- [ ] Shell Configuration: Fish shell for macOS, bash for Linux/Windows specified
+- [ ] Script Compatibility: All project scripts use bash syntax for compatibility
+
+### Demonstration & Script Compliance
+- [ ] User-Requested Scripts: Shell scripts provided when users request testing/demos/simulations
+- [ ] Script Organization: scripts/, scripts/test/, scripts/demo/, scripts/simulate/ directories planned
+- [ ] Platform Support: Scripts compatible with macOS (fish), Linux (bash), Windows (WSL2 bash)
+- [ ] Script Standards: Proper permissions, error handling, documentation included
+- [ ] Self-Contained Scripts: Dependencies and setup instructions clearly documented
+
+### Containerization & Docker Compliance
+- [ ] Multi-Service Support: Docker Compose provided when 2+ services required
+- [ ] Environment Configuration: .env files separated and easily accessible
+- [ ] Architecture Research: Docker architecture research completed before implementation
+- [ ] Service Design: Containerization approach evaluated and documented
+- [ ] Development Workflow: Docker optimized for development with hot reload support
+
+### Research & Due Diligence Compliance
+- [ ] Current Information: Web research conducted for latest technology updates
+- [ ] Security Review: Security advisories and vulnerabilities checked and documented
+- [ ] Alternative Analysis: Alternative solutions researched and evaluated
+- [ ] Best Practices: Current best practices identified and documented
+- [ ] Research Documentation: All research findings documented with sources and dates
 
 ## Project Structure
 
 ### Documentation (this feature)
 ```
-specs/[###-feature]/
+specs/[meaningful-feature]/
 ├── plan.md              # This file (/plan command output)
 ├── research.md          # Phase 0 output (/plan command)
 ├── data-model.md        # Phase 1 output (/plan command)

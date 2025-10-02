@@ -1,12 +1,12 @@
 # Tasks: [FEATURE NAME]
 
-**Input**: Design documents from `/specs/[###-feature-name]/`
+**Input**: Design documents from `/specs/[meaningful-feature-name]/`
 **Prerequisites**: plan.md (required), research.md, data-model.md, contracts/
 
 ## Execution Flow (main)
 ```
 1. Load plan.md from feature directory
-   → If not found: ERROR "No implementation plan found"
+   → If not found: ERROR "No implementation plan found at /specs/[meaningful-feature-name]/plan.md"
    → Extract: tech stack, libraries, structure
 2. Load optional design documents:
    → data-model.md: Extract entities → model tasks
@@ -49,46 +49,70 @@
 
 ## Phase 3.2: Tests First (TDD) ⚠️ MUST COMPLETE BEFORE 3.3
 **CRITICAL: These tests MUST be written and MUST FAIL before ANY implementation**
-- [ ] T004 [P] Contract test POST /api/users in tests/contract/test_users_post.py
-- [ ] T005 [P] Contract test GET /api/users/{id} in tests/contract/test_users_get.py
-- [ ] T006 [P] Integration test user registration in tests/integration/test_registration.py
-- [ ] T007 [P] Integration test auth flow in tests/integration/test_auth.py
 
-## Phase 3.3: Core Implementation (ONLY after tests are failing)
-- [ ] T008 [P] User model in src/models/user.py
-- [ ] T009 [P] UserService CRUD in src/services/user_service.py
-- [ ] T010 [P] CLI --create-user in src/cli/user_commands.py
-- [ ] T011 POST /api/users endpoint
-- [ ] T012 GET /api/users/{id} endpoint
-- [ ] T013 Input validation
-- [ ] T014 Error handling and logging
+### Unit Tests (Red Phase)
+- [ ] T004 [P] Unit test User model validation in tests/unit/test_user_model.py
+- [ ] T005 [P] Unit test UserService business logic in tests/unit/test_user_service.py
+- [ ] T006 [P] Unit test CLI commands in tests/unit/test_cli_commands.py
+- [ ] T007 [P] Unit test input validation in tests/unit/test_validation.py
 
-## Phase 3.4: Integration
-- [ ] T015 Connect UserService to DB
-- [ ] T016 Auth middleware
-- [ ] T017 Request/response logging
-- [ ] T018 CORS and security headers
+### Integration Tests (Red Phase)
+- [ ] T008 [P] Contract test POST /api/users in tests/contract/test_users_post.py
+- [ ] T009 [P] Contract test GET /api/users/{id} in tests/contract/test_users_get.py
+- [ ] T010 [P] Integration test user registration in tests/integration/test_registration.py
+- [ ] T011 [P] Integration test auth flow in tests/integration/test_auth.py
 
-## Phase 3.5: Polish
-- [ ] T019 [P] Unit tests for validation in tests/unit/test_validation.py
-- [ ] T020 Performance tests (<200ms)
-- [ ] T021 [P] Update docs/api.md
-- [ ] T022 Remove duplication
-- [ ] T023 Run manual-testing.md
+### Performance Tests (Red Phase)
+- [ ] T012 [P] Load test user creation endpoint in tests/performance/test_user_creation_load.py
+- [ ] T013 [P] Response time validation for API endpoints in tests/performance/test_response_times.py
+
+## Phase 3.3: Core Implementation (Green Phase - ONLY after tests are failing)
+- [ ] T014 [P] User model in src/models/user.py
+- [ ] T015 [P] UserService CRUD in src/services/user_service.py
+- [ ] T016 [P] CLI --create-user in src/cli/user_commands.py
+- [ ] T017 POST /api/users endpoint
+- [ ] T018 GET /api/users/{id} endpoint
+- [ ] T019 Input validation
+- [ ] T020 Error handling and logging
+
+## Phase 3.4: Integration (Green Phase)
+- [ ] T021 Connect UserService to DB
+- [ ] T022 Auth middleware
+- [ ] T023 Request/response logging
+- [ ] T024 CORS and security headers
+
+## Phase 3.5: Refinement & Testing (Refactor Phase)
+- [ ] T025 [P] Refactor code to improve testability and maintainability
+- [ ] T026 [P] Optimize test performance and execution time
+- [ ] T027 [P] Add edge case coverage based on implementation discoveries
+- [ ] T028 [P] Update test documentation and fixtures
+
+## Phase 3.6: Polish & Documentation
+- [ ] T029 [P] Update docs/api.md with latest implementation details
+- [ ] T030 [P] Remove code duplication identified during testing
+- [ ] T031 Run manual-testing.md validation scenarios
+- [ ] T032 Final test suite validation and coverage verification
 
 ## Dependencies
-- Tests (T004-T007) before implementation (T008-T014)
-- T008 blocks T009, T015
-- T016 blocks T018
-- Implementation before polish (T019-T023)
+- Tests (T004-T013) before implementation (T014-T020)
+- T014 blocks T015, T021
+- T022 blocks T024
+- Implementation before refinement (T025-T028)
+- Refinement before polish (T029-T032)
 
 ## Parallel Example
 ```
-# Launch T004-T007 together:
+# Launch all tests together (T004-T013):
+Task: "Unit test User model validation in tests/unit/test_user_model.py"
+Task: "Unit test UserService business logic in tests/unit/test_user_service.py"
+Task: "Unit test CLI commands in tests/unit/test_cli_commands.py"
+Task: "Unit test input validation in tests/unit/test_validation.py"
 Task: "Contract test POST /api/users in tests/contract/test_users_post.py"
 Task: "Contract test GET /api/users/{id} in tests/contract/test_users_get.py"
 Task: "Integration test registration in tests/integration/test_registration.py"
 Task: "Integration test auth in tests/integration/test_auth.py"
+Task: "Load test user creation endpoint in tests/performance/test_user_creation_load.py"
+Task: "Response time validation in tests/performance/test_response_times.py"
 ```
 
 ## Notes
