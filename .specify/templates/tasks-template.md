@@ -38,8 +38,8 @@
 
 ## Path Conventions
 - **Single project**: `src/`, `tests/` at repository root
-- **Web app**: `backend/src/`, `frontend/src/`
-- **Mobile**: `api/src/`, `ios/src/` or `android/src/`
+- **Tool/Utility**: `bin/`, `lib/`, `tests/` at repository root
+- **Multi-module**: `packages/[module]/src/`, `packages/[module]/tests/`
 - Paths shown below assume single project - adjust based on plan.md structure
 
 ## Phase 3.1: Setup

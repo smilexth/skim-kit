@@ -4,6 +4,12 @@
 **Branch**: `[meaningful-feature-name]` | **Date**: [DATE] | **Spec**: [link]
 **Input**: Feature specification from `/specs/[meaningful-feature-name]/spec.md`
 
+## User Story Validation
+**Story Clarity Status**: [Fully clarified/Needs clarification/Not started]
+**User Confirmation**: [User has confirmed story understanding/Waiting for confirmation]
+**Acceptance Criteria**: [Complete and testable/Incomplete clarification needed]
+**Scope Boundaries**: [Clearly defined/Ambiguous - needs clarification]
+
 ## Execution Flow (/plan command scope)
 ```
 1. Load feature spec from Input path
@@ -44,6 +50,30 @@
 **Constraints**: [domain-specific, e.g., <200ms p95, <100MB memory, offline-capable or NEEDS CLARIFICATION]  
 **Scale/Scope**: [domain-specific, e.g., 10k users, 1M LOC, 50 screens or NEEDS CLARIFICATION]
 
+## Infrastructure Requirements
+**Infrastructure Needs**: [None/Basic/Advanced - indicates if infrastructure planning required]
+**Deployment Target**: [AWS/Azure/GCP/On-premise/Hybrid or NEEDS CLARIFICATION]
+**Infrastructure Scale**: [Single app/Microservices/Distributed or NEEDS CLARIFICATION]
+**Management Approach**: [Managed/Self-hosted/Container orchestration or NEEDS CLARIFICATION]
+**Automation Level**: [Manual/Partial automation/Full GitOps or NEEDS CLARIFICATION]
+**Compliance Requirements**: [None/Security standards/Data residency/Audit or NEEDS CLARIFICATION]
+**DevOps Maturity**: [Basic/Intermediate/Advanced - determines pipeline complexity]
+**Monitoring Needs**: [Basic health/Application performance/Business metrics or NEEDS CLARIFICATION]
+
+## Code Quality & Security Scanning Requirements
+**Code Scanning Needs**: [None/Basic quality analysis/Comprehensive quality + security scanning]
+**Quality Analysis**: [Bug detection/Code smells/Technical debt measurement/Coding standards enforcement]
+**Security Scanning**: [OWASP Top 10/CWE compliance/Hardcoded secrets detection/Dependency vulnerability analysis]
+**Coverage Requirements**: [Line/Branch coverage tracking/Mutation testing/Duplication analysis]
+**Quality Gates**: [Bug severity thresholds/Vulnerability thresholds/Maintainability ratings]
+**Scanning Integration**: [PR analysis/Main branch analysis/Incremental analysis/Baseline establishment]
+
+## Multi-Agent Worktree Requirements
+**Multi-Agent Scenario**: [Single agent/Multiple agents required/Worker agents needed]
+**Worktree Strategy**: [No worktrees needed/Dedicated worktrees per agent/Shared worktrees]
+**Agent Coordination**: [Sequential execution/Parallel execution/Coordinated parallel]
+**Worktree Isolation**: [Complete isolation required/Partial sharing allowed/Shared workspace]
+
 ## Constitution Check
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
@@ -58,6 +88,40 @@
 - [ ] Code Review Standards: Systematic code review with assignment matrix and SLA requirements
 - [ ] CI/CD Pipeline Standards: Mandatory quality gates and deployment procedures
 - [ ] Error Handling & Logging: Structured logging with correlation IDs and proper error handling
+
+### User Story Clarification Compliance
+- [ ] Story Understanding: User story is clearly understood in its entirety
+- [ ] Objective Clarity: Business objective and user value proposition are unambiguous
+- [ ] Scope Definition: Boundaries of included/excluded features are explicitly defined
+- [ ] Acceptance Criteria: Clear, measurable, and testable acceptance criteria established
+- [ ] Context Understanding: Business context, user personas, and usage scenarios understood
+- [ ] Constraint Identification: Technical and business constraints are identified
+- [ ] User Confirmation: User has explicitly confirmed story understanding
+- [ ] Planning Gate Enforcement: All ambiguities resolved before proceeding to planning
+
+### Git Worktree & Multi-Agent Compliance
+- [ ] Multi-Agent Scenario Assessment: Need for multiple agents properly evaluated and documented
+- [ ] Worktree Creation Standards: Worktree naming conventions and isolation requirements followed
+- [ ] Worktree Management Standards: Proper branch management and synchronization procedures
+- [ ] Multi-Agent Coordination: Conflict prevention and communication protocols established
+- [ ] Worktree Safety Standards: Path validation, permission management, and backup procedures
+- [ ] Agent Lifecycle Management: Proper initialization, monitoring, and cleanup procedures
+- [ ] Performance Optimization: Resource allocation and parallel operation optimization
+
+### Infrastructure & DevOps Compliance
+- [ ] Infrastructure Development Standards: User clarification completed, infrastructure choices documented
+- [ ] Infrastructure Clarification Requirements: Deployment target, scale, management approach defined
+- [ ] IaC Standards: Tool selection justified, modular design, state management planned (if applicable)
+- [ ] DevOps Pipeline Standards: User clarification completed, pipeline complexity matches requirements
+- [ ] DevOps Clarification Process: Deployment frequency, environment strategy, quality gates defined
+- [ ] Monitoring & Observability: Scope requirements, alerting strategy, retention period clarified
+
+### Code Quality & Security Scanning Compliance
+- [ ] Code Quality Analysis Standards: Bug detection, code smells, technical debt measurement implemented
+- [ ] Security Scanning Requirements: OWASP Top 10 coverage, CWE compliance, secrets detection enabled
+- [ ] Code Scanning Integration: CI/CD pipeline integration, quality gate enforcement, incremental analysis
+- [ ] Quality Gate Standards: Bug severity thresholds, vulnerability thresholds, coverage requirements defined
+- [ ] Reporting Standards: Dashboard integration, trend analysis, PR comments, notifications configured
 
 ### Development Workflow Compliance
 - [ ] Task Management: TodoWrite used for tracking, single task focus, immediate completion
@@ -93,19 +157,12 @@
 - [ ] Research-Driven Implementation: Web research conducted before all technology decisions
 - [ ] Open Source First: OSS solutions prioritized over commercial alternatives
 
-### Twelve-Factor Development Compliance
-- [ ] Factor I (Codebase): Single Git repository, multiple deployments
-- [ ] Factor II (Dependencies): Explicit dependency declaration
-- [ ] Factor III (Config): Environment variables for configuration
-- [ ] Factor IV (Backing Services): Configurable via connection strings
-- [ ] Factor V (Build, Release, Run): Strict stage separation
-- [ ] Factor VI (Processes): Stateless, disposable processes
-- [ ] Factor VII (Port Binding): Self-contained service exposure
-- [ ] Factor VIII (Concurrency): Process model scaling
-- [ ] Factor IX (Disposability): Fast startup, graceful shutdown
-- [ ] Factor X (Dev/Prod Parity): Environment consistency
-- [ ] Factor XI (Logs): Event streams to stdout/stderr
-- [ ] Factor XII (Admin Processes): One-off administrative tasks
+### Methodology Compliance
+- [ ] Spec-Driven Development: Specifications guide all development
+- [ ] Template Consistency: All templates maintain consistent structure
+- [ ] Documentation Standards: Comprehensive documentation for all components
+- [ ] Research-Driven Implementation: Research precedes all decisions
+- [ ] Open Source First: OSS solutions prioritized
 
 ### Security & Compliance
 - [ ] Dependency Management: No critical vulnerabilities, automated vulnerability scanning
@@ -117,15 +174,15 @@
 - [ ] Security Testing: SAST/DAST scanning, penetration testing, vulnerability assessment
 - [ ] License Compliance: Open source license scanning and approval process
 - [ ] Data Privacy: GDPR/CCPA compliance, privacy impact assessments
-- [ ] Accessibility: WCAG 2.1 AA compliance requirements
+- [ ] Accessibility: Documentation accessibility for all users
 
 ### Quality Assurance
-- [ ] Testing Mandate: TDD with 90% coverage, enhanced integration and E2E testing
+- [ ] Testing Mandate: TDD with appropriate coverage for project type
 - [ ] Definition of Done: All constitutional requirements met
 - [ ] Static Analysis: Code quality and validation gates
 - [ ] Code Quality Metrics: Coverage thresholds, complexity limits, technical debt tracking
-- [ ] Performance Standards: Performance budgets, load testing, monitoring requirements
-- [ ] API Design Standards: Versioning, response formats, authentication patterns
+- [ ] Documentation Standards: Complete documentation coverage
+- [ ] Template Validation: All templates pass structural validation
 
 ### Technology Selection Compliance
 - [ ] OSS-First Evaluation: All commercial alternatives documented
@@ -164,12 +221,12 @@
 - [ ] Script Standards: Proper permissions, error handling, documentation included
 - [ ] Self-Contained Scripts: Dependencies and setup instructions clearly documented
 
-### Containerization & Docker Compliance
-- [ ] Multi-Service Support: Docker Compose provided when 2+ services required
-- [ ] Environment Configuration: .env files separated and easily accessible
-- [ ] Architecture Research: Docker architecture research completed before implementation
-- [ ] Service Design: Containerization approach evaluated and documented
-- [ ] Development Workflow: Docker optimized for development with hot reload support
+### Template & Scripting Compliance
+- [ ] Template Structure: All templates follow consistent structure
+- [ ] Script Organization: Scripts organized in appropriate directories
+- [ ] Platform Support: Scripts compatible across target platforms
+- [ ] Documentation: All scripts include proper documentation
+- [ ] Error Handling: Comprehensive error handling in all scripts
 
 ### Research & Due Diligence Compliance
 - [ ] Current Information: Web research conducted for latest technology updates
@@ -211,27 +268,21 @@ tests/
 ├── integration/
 └── unit/
 
-# [REMOVE IF UNUSED] Option 2: Web application (when "frontend" + "backend" detected)
-backend/
-├── src/
-│   ├── models/
-│   ├── services/
-│   └── api/
-└── tests/
+# [REMOVE IF UNUSED] Option 2: Tool/Utility (when command-line tool detected)
+bin/
+├── [executable-name]
+└── scripts/
 
-frontend/
-├── src/
-│   ├── components/
-│   ├── pages/
-│   └── services/
-└── tests/
+lib/
+├── core/
+├── utils/
+└── templates/
 
-# [REMOVE IF UNUSED] Option 3: Mobile + API (when "iOS/Android" detected)
-api/
-└── [same as backend above]
-
-ios/ or android/
-└── [platform-specific structure: feature modules, UI flows, platform tests]
+# [REMOVE IF UNUSED] Option 3: Multi-module project (when multiple components detected)
+packages/
+├── [module-1]/
+├── [module-2]/
+└── shared/
 ```
 
 **Structure Decision**: [Document the selected structure and reference the real

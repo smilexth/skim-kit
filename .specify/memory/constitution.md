@@ -1,11 +1,11 @@
 <!--
 Sync Impact Report:
-Version change: 2.4.2 → 3.0.0 (major version)
-Modified principles: N/A
-Added sections: 22 comprehensive sections covering Code Review, CI/CD, Security, Performance, API Design, Database Management, Testing, Branch Management, Documentation, Tooling, Release Management, Code Quality, Communication, and Compliance standards
+Version change: 3.3.0 → 3.4.0 (minor version)
+Modified principles: Updated Orchestrator-Worker Pattern (IV) to include git worktree usage for multi-agent scenarios
+Added sections: 1 comprehensive section covering Git Worktree Standards for Multi-Agent Scenarios (IX) with detailed creation standards, management procedures, coordination protocols, safety standards, lifecycle management, and performance optimization
 Removed sections: N/A
-Templates requiring updates: ⚠ plan-template.md (needs major updates for all new standards), ⚠ tasks-template.md (needs major updates for all new standards), ⚠ spec-template.md (needs major updates for all new standards), ⚠ command templates (needs major updates for all new standards)
-Follow-up TODOs: Update all templates to reflect comprehensive constitutional standards
+Templates requiring updates: ⚠ plan-template.md (needs multi-agent worktree integration), ⚠ tasks-template.md (needs worktree task categories), ⚠ spec-template.md (needs multi-agent scenario clarification), ⚠ command templates (needs worktree guidance updates)
+Follow-up TODOs: Update all templates to support git worktree operations for multi-agent scenarios, add worktree checks to constitution compliance
 -->
 
 # Skim-Kit Constitution
@@ -22,7 +22,7 @@ NEVER use force flags (-f, --force) in any commands or operations. All operation
 Break all work into small, testable increments that can be completed in under 1 hour. Each increment must be independently valuable and deployable. Complex features are delivered through multiple small phases, not monolithic implementations.
 
 ### IV. Orchestrator-Worker Pattern
-Claude acts as orchestrator: planning, coordination, GitHub operations, monitoring. Codex workers handle execution: file operations, code changes, analysis tasks. Clear separation of concerns with file-based communication between components. Parallel execution preferred when tasks are independent.
+Claude acts as orchestrator: planning, coordination, GitHub operations, monitoring. Codex workers handle execution: file operations, code changes, analysis tasks. Clear separation of concerns with file-based communication between components. Parallel execution preferred when tasks are independent. When users request multiple agents to run separately or spawn worker agents, git worktrees MUST be used to provide isolated working environments for each agent.
 
 ### V. Explicit Over Implicit
 All file paths must be absolute, not relative. All output locations must be specified explicitly. Configuration and parameters must be visible and auditable. No hidden side effects or magical behaviors.
@@ -33,14 +33,217 @@ All specifications in git worktrees or branches MUST use meaningful, descriptive
 ### VII. GitHub CLI Repository Creation
 When users request repository creation, MUST use `gh repo create` command. GitHub CLI is the standard tool for all repository operations, providing consistent authentication, proper configuration, and integration with existing workflows. Alternative methods MAY ONLY be used when GitHub CLI is unavailable or explicitly requested otherwise.
 
-### VIII. Code Review Standards
+### VIII. User Story Clarification Standards
+Before planning any feature or implementation, the user story or requirements MUST be thoroughly checked, repeated, and clarified with the user. All ambiguous aspects, missing details, or unclear requirements MUST be resolved before proceeding to technical planning. Planning MUST NOT begin until user story clarity is achieved and confirmed.
+
+#### User Story Validation Requirements
+All user stories MUST pass these validation checks before planning:
+- **Story Understanding**: The story is clearly understood by the AI agent in its entirety
+- **Objective Clarity**: The business objective and user value proposition are unambiguous
+- **Scope Definition**: Boundaries of what is included and excluded are explicitly defined
+- **Acceptance Criteria**: Clear, measurable, and testable acceptance criteria are established
+- **Context Understanding**: Business context, user personas, and usage scenarios are understood
+- **Constraint Identification**: Technical constraints, business constraints, and limitations are identified
+
+#### Clarification Process Standards
+When user stories require clarification, the following process MUST be followed:
+- **Initial Assessment**: Identify all unclear aspects and missing information
+- **Question Formulation**: Prepare specific, targeted questions to resolve uncertainties
+- **User Consultation**: Present questions and clarification requests to the user
+- **Response Validation**: Review user responses and identify any remaining ambiguities
+- **Confirmation Loop**: Repeat understanding back to user for verification
+- **Documentation**: Record all clarifications and decisions for reference
+
+#### Planning Gate Enforcement
+Technical planning MUST NOT proceed until:
+- All user story questions are resolved to user satisfaction
+- User explicitly confirms the story is understood correctly
+- Acceptance criteria are validated and approved
+- Scope and boundaries are agreed upon
+- All stakeholders (if applicable) have reviewed and approved the clarified story
+
+#### Story Refinement Standards
+Clarified user stories MUST follow these standards:
+- **Clear Language**: Simple, unambiguous language that avoids technical jargon
+- **Measurable Outcomes**: Success criteria that can be objectively measured
+- **Value Focus**: Clear articulation of user value and business benefit
+- **Testable Criteria**: Requirements that can be verified through testing
+- **Complete Information**: All necessary details for implementation are included
+
+### IX. Git Worktree Standards for Multi-Agent Scenarios
+When users request multiple agents to run separately or spawn worker agents, git worktrees MUST be used to provide isolated working environments for each agent. Worktrees enable parallel development without interference between agents while maintaining synchronization with the main repository.
+
+#### Multi-Agent Worktree Creation Standards
+When creating worktrees for multiple agents, these standards MUST be followed:
+- **Worktree Purpose**: Each worktree MUST be created for a specific agent or task with clear purpose
+- **Isolation**: Each worktree MUST provide complete isolation from other agents' workspaces
+- **Naming Convention**: Worktree directories MUST follow the pattern `worktrees/[agent-name]/[task-purpose]`
+- **Branch Association**: Each worktree MUST be associated with a specific branch or commit
+- **Configuration**: Each worktree MUST have proper git configuration for the assigned agent
+
+#### Worktree Management Standards
+All worktree operations MUST follow these management standards:
+- **Creation Process**: Use `git worktree add <path> <branch>` with absolute paths and meaningful names
+- **Branch Management**: Each worktree MUST work on a dedicated branch to prevent conflicts
+- **Synchronization**: Regular synchronization with main repository using `git pull` in each worktree
+- **Status Monitoring**: Track worktree status and prevent orphaned or abandoned worktrees
+- **Cleanup Procedures**: Proper worktree removal using `git worktree remove` after task completion
+
+#### Multi-Agent Coordination Standards
+When multiple agents work simultaneously, these coordination standards MUST be followed:
+- **Conflict Prevention**: Agents MUST work on separate branches within their worktrees
+- **Communication Protocol**: File-based communication between agents via shared directories
+- **Progress Tracking**: Centralized progress tracking accessible by orchestrator and all agents
+- **Resource Management**: Monitor system resources to prevent agent interference
+- **Error Handling**: Isolated error handling prevents one agent's failure from affecting others
+
+#### Worktree Safety and Security Standards
+All worktree operations MUST follow safety and security standards:
+- **Path Validation**: Validate all worktree paths before creation to prevent directory conflicts
+- **Permission Management**: Ensure proper file permissions for each agent's worktree
+- **Backup Procedures**: Create worktree backups before critical operations
+- **Rollback Capability**: Ability to restore worktree state if operations fail
+- **Audit Logging**: Log all worktree creation, modification, and deletion operations
+
+#### Agent Lifecycle Management
+When managing multiple agent worktrees, these lifecycle standards MUST be followed:
+- **Initialization**: Proper worktree setup and configuration for each spawned agent
+- **Monitoring**: Continuous monitoring of agent worktree activity and resource usage
+- **Communication**: Established communication channels between orchestrator and worker agents
+- **Termination**: Clean worktree cleanup and resource release when agents complete tasks
+- **Error Recovery**: Procedures for recovering from agent failures or worktree corruption
+
+#### Worktree Performance Optimization
+For optimal performance in multi-agent scenarios:
+- **Resource Allocation**: Assign appropriate system resources to each agent worktree
+- **Parallel Operations**: Enable parallel git operations across multiple worktrees when safe
+- **Cache Management**: Manage git object caches to optimize performance across worktrees
+- **Network Optimization**: Minimize network overhead for distributed worktree operations
+- **Storage Management**: Monitor and manage disk space usage across all worktrees
+
+### X. Code Review Standards
 All pull requests MUST undergo systematic code review before merge with clear assignment matrices, SLA requirements, and approval criteria based on change size and risk level. Reviews must be constructive, specific, and address security, performance, functionality, testing, documentation, error handling, and dependencies.
 
-### IX. CI/CD Pipeline Standards
-All pull requests MUST pass mandatory quality gates including linting (0 errors/warnings), unit tests (≥90% coverage), integration tests, security scanning (no critical/high vulnerabilities), dependency scanning, and build success. Deployment pipelines must include rollback capability, health checks, monitoring, and proper build failure management with defined escalation procedures.
+### XI. CI/CD Pipeline Standards
+All pull requests MUST pass mandatory quality gates including linting (0 errors/warnings), unit tests (≥90% coverage), integration tests, comprehensive code quality analysis, security scanning (no critical/high vulnerabilities), dependency scanning, and build success. When code scanning tools are implemented, they MUST follow the Code Quality & Security Scanning Standards (Section XIII). Deployment pipelines must include rollback capability, health checks, monitoring, and proper build failure management with defined escalation procedures.
 
-### X. Error Handling & Logging Standards
-All errors must follow consistent exception hierarchies with proper context and user-friendly messages. Logging must use structured JSON format with correlation IDs, ISO timestamps, and appropriate log levels (DEBUG, INFO, WARN, ERROR, FATAL). Error monitoring must include rate tracking, pattern detection, and immediate alerting for critical errors and performance degradation.
+### XII. Error Handling & Logging Standards
+All errors must follow consistent exception hierarchies with proper context and user-friendly messages. Logging must be structured JSON format with correlation IDs, ISO timestamps, and appropriate log levels (DEBUG, INFO, WARN, ERROR, FATAL). Error monitoring must include rate tracking, pattern detection, and immediate alerting for critical errors and performance degradation.
+
+### XIII. Code Quality & Security Scanning Standards
+When code scanning tools are implemented into a project, they MUST follow comprehensive analysis standards covering both code quality and security aspects. Scanning MUST be integrated into development workflows and CI/CD pipelines with appropriate quality gates and reporting mechanisms.
+
+#### Code Quality Analysis Requirements
+All code quality analysis MUST include these essential capabilities:
+- **Bug Detection**: Automated detection of potential bugs, logical errors, and runtime exceptions
+- **Code Smell Identification**: Identification of maintainability issues, anti-patterns, and design problems
+- **Vulnerability Detection**: Analysis for security vulnerabilities and potential attack vectors
+- **Technical Debt Measurement**: Quantification of technical debt with remediation effort estimates
+- **Code Complexity Analysis**: Cyclomatic complexity, cognitive complexity, and maintainability index
+- **Coding Standards Enforcement**: Automated enforcement of team coding standards and best practices
+- **Test Coverage Tracking**: Line coverage, branch coverage, and mutation testing coverage
+- **Code Duplication Analysis**: Detection and reporting of duplicated code blocks and patterns
+
+#### Security Scanning Requirements
+All security scanning MUST include comprehensive security analysis:
+- **OWASP Top 10 Coverage**: Automated detection of OWASP Top 10 security vulnerabilities
+- **CWE Compliance**: Identification of Common Weakness Enumerations and security issues
+- **Hardcoded Secrets Detection**: Scanning for exposed API keys, passwords, and credentials
+- **Dependency Vulnerability Analysis**: Analysis of third-party dependencies for known vulnerabilities
+- **Security Hotspots Review**: Manual review guidance for potential security issues requiring human assessment
+- **Static Application Security Testing (SAST)**: Source code analysis for security vulnerabilities
+- **Software Composition Analysis (SCA)**: Open source component vulnerability scanning
+- **Infrastructure as Code Security**: Security scanning for Terraform, CloudFormation, and other IaC files
+
+#### Code Scanning Integration Standards
+When code scanning tools are implemented, they MUST follow these integration standards:
+- **CI/CD Pipeline Integration**: Automated scanning on all pull requests and main branch builds
+- **Quality Gate Enforcement**: Blocking merges that fail to meet defined quality and security thresholds
+- **Incremental Analysis**: Analysis of new code changes vs. existing codebase for focused review
+- **False Positive Management**: Process for marking and managing false positives in scanning results
+- **Baseline Establishment**: Creation of quality and security baselines for trend analysis
+- **Multi-Language Support**: Appropriate scanners for all programming languages used in the project
+- **Custom Rule Configuration**: Custom quality rules and security policies tailored to project needs
+
+#### Quality Gate Standards
+Code scanning implementations MUST define and enforce these quality gates:
+- **Bug Severity Threshold**: Zero critical bugs, maximum X major bugs per PR
+- **Vulnerability Threshold**: Zero critical/high vulnerabilities, maximum X medium vulnerabilities
+- **Code Coverage Requirements**: Minimum 80% line coverage, 70% branch coverage
+- **Maintainability Rating**: Minimum B grade maintainability index
+- **Duplication Threshold**: Maximum 3% code duplication
+- **Technical Debt Ratio**: Maximum 5% technical debt ratio
+- **New Code Quality**: Stricter thresholds for new code vs. legacy code
+
+#### Reporting and Notification Standards
+Code scanning tools MUST provide comprehensive reporting:
+- **Dashboard Integration**: Real-time dashboards for quality and security metrics
+- **Trend Analysis**: Historical tracking of quality metrics and security posture
+- **PR Comments Integration**: Automated comments in pull requests with scanning results
+- **Email/Slack Notifications**: Automated notifications for critical issues and quality gate failures
+- **Executive Reports**: Regular quality and security reports for stakeholders
+- **Technical Debt Reports**: Detailed technical debt analysis with prioritization
+- **Remediation Guidance**: Clear guidance and examples for fixing identified issues
+
+### XIII. Infrastructure Development Standards
+All infrastructure development MUST follow established patterns with user-defined approach selection through clarification process. Infrastructure choices MUST be documented, justified, and aligned with project requirements. Infrastructure as Code (IaC) MUST be version controlled, tested, and reviewed like application code.
+
+#### Infrastructure Clarification Requirements
+Before implementing any infrastructure, the following MUST be clarified with the user:
+- **Deployment Target**: Cloud provider (AWS, Azure, GCP) vs on-premise vs hybrid
+- **Infrastructure Scale**: Single application vs microservices vs distributed system
+- **Management Approach**: Managed services vs self-hosted vs container orchestration
+- **Automation Level**: Manual setup vs partial automation vs full GitOps
+- **Compliance Requirements**: Security standards, data residency, audit requirements
+- **Team Expertise**: Available DevOps skills and learning tolerance
+
+#### Infrastructure as Code (IaC) Standards
+When IaC is selected, implementations MUST follow:
+- **Tool Selection**: Terraform, CloudFormation, Pulumi, or Ansible based on user preference and expertise
+- **Modular Design**: Infrastructure components MUST be modular and reusable
+- **State Management**: Remote state storage with proper locking and encryption
+- **Testing**: Infrastructure code MUST include unit tests, integration tests, and compliance validation
+- **Documentation**: All infrastructure components MUST have comprehensive documentation
+- **Secret Management**: Secrets MUST be externalized using vault services or managed secret stores
+
+### XIV. DevOps Pipeline Standards
+All DevOps implementations MUST align with user-defined maturity level and operational requirements. Pipeline complexity MUST match project scale and team capabilities.
+
+#### DevOps Clarification Process
+Pipeline implementations MUST require user clarification on:
+- **Deployment Frequency**: Continuous deployment vs scheduled releases vs on-demand
+- **Environment Strategy**: Single environment vs multiple environments (dev/staging/prod)
+- **Quality Gates**: Required checks (security, performance, compliance) and failure handling
+- **Rollback Strategy**: Automatic rollback vs manual approval vs blue-green deployment
+- **Monitoring Requirements**: Basic health checks vs comprehensive observability vs APM integration
+- **Team Workflow**: Feature flags vs trunk development vs release branches
+
+#### Pipeline Implementation Standards
+- **CI/CD Platform**: GitHub Actions, GitLab CI, Jenkins, or Azure DevOps based on user preference
+- **Pipeline as Code**: All pipeline configurations MUST be version controlled
+- **Security Integration**: Automated security scanning, dependency checks, and vulnerability assessment
+- **Testing Integration**: Automated test execution with coverage reporting and quality gates
+- **Artifact Management**: Proper artifact storage, versioning, and cleanup policies
+- **Notification Strategy**: Alerting for failures, successes, and deployment status
+
+### XV. Infrastructure Monitoring & Observability
+All infrastructure MUST implement appropriate monitoring based on user-defined requirements and operational complexity.
+
+#### Monitoring Clarification Requirements
+Monitoring implementations MUST clarify:
+- **Scope Requirements**: Infrastructure health vs application performance vs business metrics
+- **Alerting Strategy**: Immediate alerts vs batch notifications vs dashboard-only monitoring
+- **Retention Period**: Short-term debugging vs long-term trend analysis vs compliance storage
+- **Access Control**: Team-wide access vs role-based access vs restricted admin access
+- **Integration Needs**: Standalone monitoring vs integrated observability platform
+- **Budget Constraints**: Open-source solutions vs commercial platforms vs hybrid approach
+
+#### Observability Standards
+- **Logs**: Structured logging with consistent format and correlation IDs
+- **Metrics**: Key performance indicators, resource utilization, and business metrics
+- **Tracing**: Distributed tracing for microservices and complex workflows
+- **Dashboards**: Custom dashboards for different stakeholders and use cases
+- **Alerting**: Intelligent alerting with proper escalation and suppression rules
 
 ## Architecture & Technology Mandates
 
@@ -883,4 +1086,4 @@ The constitution is enforced through:
 - Template consistency validation
 - Impact analysis for changes
 
-**Version**: 3.0.0 | **Ratified**: 2025-10-02 | **Last Amended**: 2025-10-02
+**Version**: 3.4.0 | **Ratified**: 2025-10-02 | **Last Amended**: 2025-10-03
