@@ -74,6 +74,13 @@
 **Agent Coordination**: [Sequential execution/Parallel execution/Coordinated parallel]
 **Worktree Isolation**: [Complete isolation required/Partial sharing allowed/Shared workspace]
 
+## Repository Publishing Requirements
+**Repository Creation**: [No new repo needed/New repo required/Existing repo to be published]
+**Publishing Intent**: [Private only/Eventually public/Immediate public required]
+**Privacy Preference**: [Default private/Private-first with user decision/Public by user request]
+**Security Requirements**: [Basic security review/Full security audit/No special requirements]
+**Documentation Status**: [Complete/In progress/Not started]
+
 ## Constitution Check
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
@@ -85,6 +92,10 @@
 - [ ] Explicit Over Implicit: Absolute file paths, explicit output locations, auditable config
 - [ ] Meaningful Naming Convention: Descriptive names for specs, no numeric prefixes or generic identifiers
 - [ ] GitHub CLI Repository Creation: Use gh repo create for repository operations
+- [ ] Repository Publishing Standards: Private-first approach, user decision control, visibility change process
+- [ ] Repository Creation Process: Proper initialization, privacy settings, team access, branch protection
+- [ ] Repository Publishing Process: Private publication execution, user consultation, public option
+- [ ] Publishing Safety Guidelines: Sensitive data check, license verification, documentation completeness
 - [ ] Code Review Standards: Systematic code review with assignment matrix and SLA requirements
 - [ ] CI/CD Pipeline Standards: Mandatory quality gates and deployment procedures
 - [ ] Error Handling & Logging: Structured logging with correlation IDs and proper error handling

@@ -1,11 +1,11 @@
 <!--
 Sync Impact Report:
-Version change: 3.3.0 → 3.4.0 (minor version)
-Modified principles: Updated Orchestrator-Worker Pattern (IV) to include git worktree usage for multi-agent scenarios
-Added sections: 1 comprehensive section covering Git Worktree Standards for Multi-Agent Scenarios (IX) with detailed creation standards, management procedures, coordination protocols, safety standards, lifecycle management, and performance optimization
+Version change: 3.4.0 → 3.5.0 (minor version)
+Modified principles: Enhanced GitHub CLI Repository Creation (VII) to include comprehensive repository publishing standards
+Added sections: Repository Publishing Standards, Repository Creation Process, Repository Publishing Process, and Safety Guidelines for Publishing as subsections of Principle VII
 Removed sections: N/A
-Templates requiring updates: ⚠ plan-template.md (needs multi-agent worktree integration), ⚠ tasks-template.md (needs worktree task categories), ⚠ spec-template.md (needs multi-agent scenario clarification), ⚠ command templates (needs worktree guidance updates)
-Follow-up TODOs: Update all templates to support git worktree operations for multi-agent scenarios, add worktree checks to constitution compliance
+Templates requiring updates: ⚠ plan-template.md (needs repository publishing requirements integration), ⚠ tasks-template.md (needs publishing task categories), ⚠ spec-template.md (needs publishing clarification), ⚠ command templates (needs publishing guidance updates)
+Follow-up TODOs: Update all templates to support repository publishing processes, add publishing checks to constitution compliance
 -->
 
 # Skim-Kit Constitution
@@ -30,8 +30,39 @@ All file paths must be absolute, not relative. All output locations must be spec
 ### VI. Meaningful Naming Convention
 All specifications in git worktrees or branches MUST use meaningful, descriptive names that clearly communicate the feature purpose. NEVER use numeric prefixes (e.g., 001-, 002-) or generic identifiers. Names must be human-readable and instantly understandable. Examples: `user-authentication-system` instead of `001-read-this-n8n`.
 
-### VII. GitHub CLI Repository Creation
+### VII. GitHub CLI Repository Creation & Publishing Standards
 When users request repository creation, MUST use `gh repo create` command. GitHub CLI is the standard tool for all repository operations, providing consistent authentication, proper configuration, and integration with existing workflows. Alternative methods MAY ONLY be used when GitHub CLI is unavailable or explicitly requested otherwise.
+
+#### Repository Publishing Standards
+When users request repository publishing, these standards MUST be followed:
+- **Private-First Approach**: MUST use `gh publish --private` to publish repositories as private by default
+- **User Decision Control**: Private repositories MUST remain private until user explicitly requests public visibility
+- **Visibility Change Process**: User MUST make explicit decision to change visibility from private to public
+- **Risk Assessment**: Before making repository public, security scan and sensitive data review MUST be completed
+- **Documentation Requirements**: README and documentation MUST be complete before public publishing
+
+#### Repository Creation Process
+All repository creation MUST follow this process:
+- **Initialization**: Use `gh repo create` with appropriate configuration
+- **Privacy Setting**: Default to private visibility unless explicitly specified otherwise
+- **Team Access**: Configure appropriate team permissions and access controls
+- **Branch Protection**: Set up main branch protection rules
+- **Issue Templates**: Configure issue and PR templates if required
+
+#### Repository Publishing Process
+When users request repository publishing:
+- **Private Publication**: Execute `gh publish --private` as the default action
+- **User Consultation**: Inform user that repository is published privately
+- **Public Option**: Provide user with option to make repository public when ready
+- **Change Confirmation**: Require explicit user confirmation before changing visibility
+- **Security Review**: Conduct security review before public visibility change
+
+#### Safety Guidelines for Publishing
+- **Sensitive Data Check**: Verify no secrets, API keys, or sensitive information are present
+- **License Verification**: Ensure appropriate license is in place for public repositories
+- **Documentation Completeness**: README, contributing guidelines, and documentation must be complete
+- **Code Review**: Full code review must be completed before public publishing
+- **Dependency Audit**: Check for vulnerable dependencies before public visibility
 
 ### VIII. User Story Clarification Standards
 Before planning any feature or implementation, the user story or requirements MUST be thoroughly checked, repeated, and clarified with the user. All ambiguous aspects, missing details, or unclear requirements MUST be resolved before proceeding to technical planning. Planning MUST NOT begin until user story clarity is achieved and confirmed.
@@ -1086,4 +1117,4 @@ The constitution is enforced through:
 - Template consistency validation
 - Impact analysis for changes
 
-**Version**: 3.4.0 | **Ratified**: 2025-10-02 | **Last Amended**: 2025-10-03
+**Version**: 3.5.0 | **Ratified**: 2025-10-02 | **Last Amended**: 2025-10-03
